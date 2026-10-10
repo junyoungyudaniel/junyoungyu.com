@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Junyoung Yu</title>
+    <meta name="description" content="Junyoung Yu — personal website" />
+    <style>
+      :root {
+        --bg: #070b17;
+        --bg2: #0d1630;
+        --card: rgba(17, 24, 39, 0.78);
+        --card-border: rgba(148, 163, 184, 0.22);
+        --text: #e5eefc;
+        --muted: #a9b9d7;
+        --accent: #7dd3fc;
+        --accent-2: #c084fc;
+        --good: #86efac;
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        font-family: Inter, "Segoe UI", sans-serif;
+        color: var(--text);
+        background:
+          radial-gradient(circle at top, rgba(125, 211, 252, 0.18), transparent 35%),
+          radial-gradient(circle at bottom right, rgba(192, 132, 252, 0.16), transparent 30%),
+          linear-gradient(135deg, var(--bg), var(--bg2));
+      }
+
+      a { color: inherit; }
+      .page {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 72px 20px 80px;
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: 1.3fr 0.7fr;
+        gap: 28px;
+        align-items: center;
+        min-height: 60vh;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 8px 12px;
+        border: 1px solid var(--card-border);
+        border-radius: 999px;
+        background: rgba(15, 23, 42, 0.45);
+        color: var(--accent);
+        font-size: 12px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      .eyebrow::before {
+        content: "";
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--accent);
+        box-shadow: 0 0 16px var(--accent);
+      }
+
+      h1 {
+        margin: 20px 0 16px;
+        font-size: clamp(2.7rem, 6vw, 5rem);
+        line-height: 0.96;
+        letter-spacing: -0.06em;
+      }
+
+      .subtitle {
+        font-size: 1.12rem;
+        color: var(--muted);
+        max-width: 620px;
+        line-height: 1.7;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        margin-top: 30px;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 14px 20px;
+        border-radius: 999px;
+        text-decoration: none;
+        font-weight: 600;
+        border: 1px solid transparent;
+        transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .btn:hover {
+        transform: translateY(-1px);
+      }
+
+      .btn.primary {
+        background: linear-gradient(135deg, var(--accent), var(--accent-2));
+        color: #04101e;
+        box-shadow: 0 12px 28px rgba(125, 211, 252, 0.28);
+      }
+
+      .btn.secondary {
+        border-color: var(--card-border);
+        background: rgba(15, 23, 42, 0.4);
+      }
+
+      .profile-card {
+        background: var(--card);
+        border: 1px solid var(--card-border);
+        border-radius: 24px;
+        padding: 20px;
+        box-shadow: 0 18px 40px rgba(15, 23, 42, 0.45);
+      }
+
+      .avatar {
+        width: 100%;
+        aspect-ratio: 1;
+        border-radius: 18px;
+        display: grid;
+        place-items: center;
+        background: linear-gradient(135deg, rgba(125, 211, 252, 0.22), rgba(192, 132, 252, 0.2));
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        font-size: clamp(2.5rem, 6vw, 4rem);
+      }
+
+      .details {
+        margin-top: 18px;
+        display: grid;
+        gap: 10px;
+      }
+
+      .detail {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 10px 0;
+        border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+      }
+
+      .detail:last-child { border-bottom: 0; }
+      .label {
+        color: var(--muted);
+      }
+
+      section {
+        margin-top: 52px;
+      }
+
+      .section-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 18px;
+        margin-bottom: 20px;
+      }
+
+      h2 {
+        margin: 0;
+        font-size: clamp(1.5rem, 3vw, 2.2rem);
+        letter-spacing: -0.04em;
+      }
+
+      .badge {
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        color: var(--good);
+        border: 1px solid rgba(134, 239, 172, 0.25);
+        background: rgba(134, 239, 172, 0.08);
+        padding: 8px 10px;
+        border-radius: 999px;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 18px;
+      }
+
+      .card {
+        background: var(--card);
+        border: 1px solid var(--card-border);
+        border-radius: 20px;
+        padding: 20px;
+      }
+
+      .card h3 {
+        margin: 0 0 10px;
+        font-size: 1.1rem;
+      }
+
+      .card p, .card li {
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      ul {
+        margin: 0;
+        padding-left: 18px;
+      }
+
+      .links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 18px;
+      }
+
+      .chip {
+        display: inline-block;
+        padding: 8px 12px;
+        border-radius: 999px;
+        background: rgba(148, 163, 184, 0.08);
+        border: 1px solid var(--card-border);
+        color: var(--text);
+        text-decoration: none;
+      }
+
+      @media (max-width: 760px) {
+        .hero {
+          grid-template-columns: 1fr;
+          min-height: unset;
+        }
+        .section-header {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header class="hero">
+        <div>
+          <div class="eyebrow">Portfolio</div>
+          <h1>Junyoung Yu</h1>
+          <p class="subtitle">
+            Business Analytics student at HKU Business School. I enjoy data, strategy,
+            leadership, and building ideas that turn research and curiosity into action.
+          </p>
+          <div class="actions">
+            <a class="btn primary" href="mailto:junyoungyu@connect.hku.hk">Contact</a>
+            <a class="btn secondary" href="https://www.linkedin.com/in/junyoungyu07" target="_blank" rel="noopener">LinkedIn</a>
+          </div>
+        </div>
+
+        <aside class="profile-card">
+          <div class="avatar" aria-label="Profile avatar">✦</div>
+          <div class="details">
+            <div class="detail"><span class="label">Role</span><strong>Business Analytics</strong></div>
+            <div class="detail"><span class="label">School</span><strong>HKU</strong></div>
+            <div class="detail"><span class="label">Focus</span><strong>Data, Strategy, Leadership</strong></div>
+          </div>
+        </aside>
+      </header>
+
+      <section>
+        <div class="section-header">
+          <h2>About</h2>
+          <span class="badge">Active</span>
+        </div>
+        <div class="grid">
+          <article class="card">
+            <h3>Education</h3>
+            <p>BBA in Business Analytics at HKU Business School.</p>
+          </article>
+          <article class="card">
+            <h3>Experience</h3>
+            <p>Research, investments, leadership, and community engagement.</p>
+          </article>
+          <article class="card">
+            <h3>Interests</h3>
+            <p>Data-driven decision making, finance, sustainability, and innovation.</p>
+          </article>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-header">
+          <h2>Highlights</h2>
+        </div>
+        <div class="card">
+          <ul>
+            <li>UNESCO & Prada Sea Beyond — first place recognition.</li>
+            <li>Business analytics and quantitative coursework.</li>
+            <li>Leadership across student organizations and community initiatives.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-header">
+          <h2>Links</h2>
+        </div>
+        <div class="links">
+          <a class="chip" href="https://www.linkedin.com/in/junyoungyu07" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="chip" href="https://www.instagram.com/danielyu_07/" target="_blank" rel="noopener">Instagram</a>
+          <a class="chip" href="mailto:junyoungyu@connect.hku.hk">Email</a>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>
